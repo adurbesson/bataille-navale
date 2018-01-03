@@ -2,7 +2,7 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
-#include "grille.h"
+
 
 #include <string>
 
@@ -11,7 +11,7 @@ private:
     std::string nom;//
     size_t bateauxCoules, score, identifiant; //nbr de bateau perdus, et score = nombre de parties gagnées par le joueur
 	bool ia;//pour savoir si le joueur est une IA ou pas
-	Grille grille;
+	//Grille grille;
 
 public:
     //constructeurs / destructeurs
@@ -25,7 +25,7 @@ public:
     size_t getCoules()const;
     size_t getId()const;
     bool getIA()const;
-    Grille getGrille();
+    //Grille getGrille();
     
     //accesseur en écriture
     
@@ -35,6 +35,7 @@ public:
     void addScore();
     void setScore0();
     void setIA();
+    void setId(size_t id);
     //void setGrille(Grille grille);
   
     

@@ -7,8 +7,42 @@
 
 # Définition des variables (-lncurse est ecrit sur le sujet)
 CC= g++
-FLAGS= -Wall -lncurse
+FLAGS= -Wall -lncurses
 
+
+
+all : case.o chargerNavirePerso.o grille.o jeu.o joueur.o main.o navire.o regles.o tableau-case.o window.o
+	g++ case.o chargerNavirePerso.o grille.o jeu.o joueur.o main.o navire.o regles.o tableau-case.o window.o -o Programme
+ 
+main.o : main.cpp jeu.cpp joueur.cpp regles.cpp window.cpp navire.cpp case.cpp grille.cpp chargerNavirePerso.cpp tableau-case.cpp
+	g++ -c main.cpp -o main.o
+ 
+case.o : case.cpp window.cpp
+	g++ -c case.cpp -o case.o
+
+chargerNavirePerso.o : chargerNavirePerso.cpp navire.cpp
+	g++ -c chargerNavirePerso.cpp -o chargerNavirePerso.o
+
+grille.o : grille.cpp tableau-case.cpp navire.cpp window.cpp
+	g++ -c grille.cpp -o grille.o
+
+jeu.o : jeu.cpp regles.cpp joueur.cpp window.cpp navire.cpp case.cpp grille.cpp
+	g++ -c jeu.cpp -o jeu.o
+
+joueur.o : joueur.cpp 
+	g++ -c joueur.cpp -o joueur.o
+
+navire.o : navire.cpp case.cpp window.cpp
+	g++ -c navire.cpp -o navire.o
+
+regles.o : regles.cpp
+	g++ -c regles.cpp -o regles.o
+
+tableau-case.o : tableau-case.cpp case.cpp
+	g++ -c tableau-case.cpp -o tableau-case.o
+
+window.o : window.cpp
+	g++ -c window.cpp -o window.o
 
 
 
