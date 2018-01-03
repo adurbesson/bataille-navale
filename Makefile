@@ -12,7 +12,7 @@ FLAGS= -Wall -lncurses
 
 
 all : case.o chargerNavirePerso.o grille.o jeu.o joueur.o main.o navire.o regles.o tableau-case.o window.o
-	g++ case.o chargerNavirePerso.o grille.o jeu.o joueur.o main.o navire.o regles.o tableau-case.o window.o -o Programme
+	g++ case.o chargerNavirePerso.o grille.o jeu.o joueur.o main.o navire.o regles.o tableau-case.o window.o -o Programme $(FLAGS)
  
 main.o : main.cpp jeu.cpp joueur.cpp regles.cpp window.cpp navire.cpp case.cpp grille.cpp chargerNavirePerso.cpp tableau-case.cpp
 	g++ -c main.cpp -o main.o
