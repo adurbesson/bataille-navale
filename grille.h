@@ -16,7 +16,7 @@ private:
   
   Navire tabNavires[5];
   TableauCase tabCases;
-  size_t nbNaviresCoules;
+  size_t nbNaviresCoules;	
 
 public:
   Grille();
@@ -45,6 +45,8 @@ public:
 
   size_t getNbNaviresCoules();
   void calculNbNaviresCoules();
+  
+  void operator=(Grille nouv);
     
 };
 

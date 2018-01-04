@@ -22,8 +22,10 @@ Jeu::Jeu(size_t nombreJoueurs,size_t nombreJoueursHumains){
    this->nombreJoueursHumains=nombreJoueursHumains;
     listeJoueurs=new Joueur[nombreJoueurs]();
     
+    
     for(size_t i=0;i<nombreJoueurs;i++){
     listeJoueurs[i].setId(i+1);
+    listeJoueurs[i].setGrille();
     }// initialisation des identifiants joueurs
     
     if(nombreJoueursHumains>nombreJoueurs){
@@ -216,30 +218,255 @@ Jeu::~Jeu(){
 }
 
 
+void Jeu::setNombreJoueurs(size_t nombreJoueurs,size_t nombreJoueursHumains){
+   this->nombreJoueurs=nombreJoueurs;
+   this->nombreJoueursHumains=nombreJoueursHumains;
+    listeJoueurs=new Joueur[nombreJoueurs]();
+    
+    for(size_t i=0;i<nombreJoueurs;i++){
+    listeJoueurs[i].setId(i+1);
+    listeJoueurs[i].setGrille();
+    }// initialisation des identifiants joueurs
+    
+    if(nombreJoueursHumains>nombreJoueurs){
+    std::cerr<<"Vous avez entré plus de joueurs humains que de joueurs total. Le programme s'est arrêté."<<std::endl;
+    exit(EXIT_FAILURE);}
+  
+    if(nombreJoueurs==2){
+    	if(nombreJoueursHumains==0){
+    	listeJoueurs[0].setNom("IA_1");
+    	listeJoueurs[0].setIA();
+    	listeJoueurs[1].setNom("IA_2");
+    	listeJoueurs[1].setIA();
+    	}
+    	
+    	else if(nombreJoueursHumains==1){
+    	std::cout<<"Entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom("IA_1");
+    	listeJoueurs[1].setIA();
+    	}
+    	
+    	else if(nombreJoueursHumains==2){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	}
+    
+    }
+    
+    else if(nombreJoueurs==3){
+    if(nombreJoueursHumains==0){
+    	listeJoueurs[0].setNom("IA_1");
+    	listeJoueurs[0].setIA();
+    	listeJoueurs[1].setNom("IA_2");
+    	listeJoueurs[1].setIA();
+    	listeJoueurs[2].setNom("IA_3");
+    	listeJoueurs[2].setIA();
+    	}
+    else if(nombreJoueursHumains==1){
+    	std::cout<<"Entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom("IA_1");
+    	listeJoueurs[1].setIA();
+    	listeJoueurs[2].setNom("IA_2");
+    	listeJoueurs[2].setIA();
+    	}
+    else if(nombreJoueursHumains==2){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	listeJoueurs[2].setNom("IA_1");
+    	listeJoueurs[2].setIA();
+    	}
+    else if(nombreJoueursHumains==3){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	std::cout<<"Joueur 3, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_3;
+    	std::cin>>nomJoueur_3;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	listeJoueurs[2].setNom(nomJoueur_3);
+    }
+    	
+    
+    }
+    
+    else if(nombreJoueurs==4){
+     if(nombreJoueursHumains==0){
+    	listeJoueurs[0].setNom("IA_1");
+    	listeJoueurs[0].setIA();
+    	listeJoueurs[1].setNom("IA_2");
+    	listeJoueurs[1].setIA();
+    	listeJoueurs[2].setNom("IA_3");
+    	listeJoueurs[2].setIA();
+    	listeJoueurs[3].setNom("IA_4");
+    	listeJoueurs[3].setIA();
+    	}
+    else if(nombreJoueursHumains==1){
+    	std::cout<<"Entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom("IA_1");
+    	listeJoueurs[1].setIA();
+    	listeJoueurs[2].setNom("IA_2");
+    	listeJoueurs[2].setIA();
+    	listeJoueurs[3].setNom("IA_4");
+    	listeJoueurs[3].setIA();
+    	}
+    else if(nombreJoueursHumains==2){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	listeJoueurs[2].setNom("IA_1");
+    	listeJoueurs[2].setIA();
+    	listeJoueurs[3].setNom("IA_2");
+    	listeJoueurs[3].setIA();
+    	}
+    else if(nombreJoueursHumains==3){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	std::cout<<"Joueur 3, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_3;
+    	std::cin>>nomJoueur_3;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	listeJoueurs[2].setNom(nomJoueur_3);
+    	listeJoueurs[3].setNom("IA_1");
+    	listeJoueurs[3].setIA();
+    }
+    else if(nombreJoueursHumains==4){
+    	std::cout<<"Joueur 1, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_1;
+    	std::cin>>nomJoueur_1;
+    	std::cout<<"Joueur 2, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_2;
+    	std::cin>>nomJoueur_2;
+    	std::cout<<"Joueur 3, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_3;
+    	std::cin>>nomJoueur_3;
+    	std::cout<<"Joueur 4, entrez votre nom"<<std::endl;
+    	std::string nomJoueur_4;
+    	std::cin>>nomJoueur_4;
+    	
+ 
+    	
+    	listeJoueurs[0].setNom(nomJoueur_1);
+    	listeJoueurs[1].setNom(nomJoueur_2);
+    	listeJoueurs[2].setNom(nomJoueur_3);
+    	listeJoueurs[3].setNom(nomJoueur_4);
+    
+    }
+
+ 
+}
+
+	else{std::cerr<<"Mauvais nombre de joueurs. Le programme s'est arrêté."<<std::endl;
+	exit(EXIT_FAILURE);}
+}
+
 void Jeu::creerRegles(){
-    int largGrille=0, hautGrille=0;
+if (nombreJoueurs==0){
+size_t t=0,h=0;
+do{std::cout<<"entrez le nombre de joueurs (entre 2 et 4)"<<std::endl;
+std::cin>>t;
+std::cout<<"entrez le nombre d'humain (entre 1 et "<<t<<")"<<std::endl;
+std::cin>>h;
+
+if(t<2 || t>4 || h>t){
+std::cout<<"vous avez entré des valeurs incorrectes"<<std::endl;
+}
+}
+while(t<2 || t>4 || h>t);
+
+
+}
+
+
+int largGrille=0, hautGrille=0;
+char c_perso;
+bool b_perso=false;
    
    
         
         
-    do{
-        std::cout<<"entrez la largeur de la grille (minimum 5) : "<<std::endl;
-        std::cin>>largGrille;
-            if(largGrille<5)
-                std::cout<<"vous avez entré une valeur inférieure à 5"<<std::endl;}
-    while(largGrille<5);
+do{
+std::cout<<"entrez la largeur de la grille (minimum 5) : "<<std::endl;
+std::cin>>largGrille;
+    if(largGrille<5)
+    std::cout<<"vous avez entré une valeur inférieure à 5"<<std::endl;}
+while(largGrille<5);
             
             
-    do{
-         std::cout<<"entrez la hauteur de la grille (minimum 5) : "<<std::endl;
-                std::cin>>hautGrille;
-                if(hautGrille<5)
-                std::cout<<"vous avez entré une valeur inférieure à 5"<<std::endl;}
-    while(hautGrille<5);
+do{
+std::cout<<"entrez la hauteur de la grille (minimum 5) : "<<std::endl;
+std::cin>>hautGrille;
+    if(hautGrille<5)
+    std::cout<<"vous avez entré une valeur inférieure à 5"<<std::endl;}
+while(hautGrille<5);
+    
+do{
+std::cout<<"Voulez vous des formes de navire personnalisés?\no/n"<<std::endl;
+
+std::cin>>c_perso;
+if(c_perso != 'o' && c_perso != 'n'){
+	std::cout<<"erreur, recommencez"<<std::endl;
+}
+    }
+while(c_perso != 'o' && c_perso != 'n');
 
     
 
-Reg.setRegles(largGrille,hautGrille);
+if(c_perso=='o')
+b_perso=true;
+Reg.setRegles(largGrille,hautGrille,b_perso);
 
 
 }
@@ -263,6 +490,8 @@ return nombreJoueurs;}
 int Jeu::getJoueursHumains(){
 return nombreJoueursHumains;}
 
+
+//enregistrement
 void Jeu::Enregistrer (std::string Chemin) const{
     try
     {
@@ -341,7 +570,7 @@ std::ostream& operator<< (std::ostream &Flux, Jeu &partie){
 //bn-main
 
 
-void tirer(Window& fenetreDeTir, Grille& grilleDeTir){ // Pas fini
+void Jeu::tirer(Window& fenetreDeTir, Grille grilleDeTir){ // Pas fini
   size_t ch;
   size_t x=0, y=0;
   bool tir = false;
@@ -496,7 +725,7 @@ void tirer(Window& fenetreDeTir, Grille& grilleDeTir){ // Pas fini
     }
 }
 
-void lancerPartie(Window& joueur, Grille& Joueur, Window& ia, Grille& IA){
+void Jeu::lancerPartie(Window& joueur, Grille& Joueur, Window& ia, Grille& IA){
   size_t first = rand() % 2;
   bool fin = false;
   while (!fin){
@@ -530,7 +759,7 @@ void lancerPartie(Window& joueur, Grille& Joueur, Window& ia, Grille& IA){
 
 }
 
-void placerNavire(Window& joueur, Grille& Joueur, Navire* aDeplacer){
+void Jeu::placerNavire(Window& joueur, Grille& Joueur, Navire* aDeplacer){
 
   size_t ch;
   
@@ -578,7 +807,7 @@ void placerNavire(Window& joueur, Grille& Joueur, Navire* aDeplacer){
     }
 }
 
-void selectionnerNavire(Window& flotte, Window& joueur, Grille& Flotte, Grille& Joueur){
+void Jeu::selectionnerNavire(Window& flotte, Window& joueur, Grille& Flotte, Grille& Joueur){
 
   size_t ch;
 
@@ -752,7 +981,7 @@ void selectionnerNavire(Window& flotte, Window& joueur, Grille& Flotte, Grille& 
     }
 }
 
-void init(){
+void Jeu::init(){
   int h=20,w=20;
   Window titre(3,30,12,0);
   Window joueur(h,w,2,6);

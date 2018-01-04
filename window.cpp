@@ -1,8 +1,7 @@
 #include "window.h"
 
 
-void init_colors(void)
-{
+void init_colors(void){
   start_color();
   init_pair(WBLACK,   COLOR_WHITE, COLOR_BLACK);
   init_pair(WCYAN,    COLOR_WHITE, COLOR_CYAN);
@@ -45,10 +44,35 @@ void Window::update() const{
   refresh();
 }
 
+Window::Window() : height(0), width(0), startx(0), starty(0), bord('+'){
+  colorwin=WCYAN;
+  colorframe=WBLACK;
+  frame=newwin(2,2,0,0);
+  win=subwin(frame,0,0,1,1);
+  wbkgd(frame,COLOR_PAIR(colorwin));
+  wbkgd(win,COLOR_PAIR(colorframe));
+  wborder(frame, '+','+','+','+','+','+','+','+');
+  wattron(win,COLOR_PAIR(colorwin));
+  wattron(frame,COLOR_PAIR(colorframe));
+  update();
+}
+
+Window::Window(Regles regle)
+  : height(regle.getHaut()), width(regle.getLarg()), startx(1), starty(1), bord('+'){
+  colorwin=WCYAN;
+  colorframe=WBLACK;
+  frame=newwin(regle.getHaut()+2,regle.getLarg()+2,1,1);
+  win=subwin(frame,regle.getHaut(),regle.getLarg(),1+1,1+1);
+  wbkgd(frame,COLOR_PAIR(colorwin));
+  wbkgd(win,COLOR_PAIR(colorframe));
+  wborder(frame, '+','+','+','+','+','+','+','+');
+  wattron(win,COLOR_PAIR(colorwin));
+  wattron(frame,COLOR_PAIR(colorframe));
+  update();
+}
 
 Window::Window(size_t h,size_t w, size_t x, size_t y, char c)
-  : height(h), width(w), startx(x), starty(y), bord(c)
-{
+  : height(h), width(w), startx(x), starty(y), bord(c){
   colorwin=WCYAN;
   colorframe=WBLACK;
   frame=newwin(h+2,w+2,y,x);
@@ -112,3 +136,23 @@ void Window::setCouleurFenetre(Color c){
 }
 
 void Window::clear() const{  werase(win); update(); }
+
+void Window::operator=(Window nouv){
+height=nouv.height;
+width=nouv.width;
+startx=nouv.startx;
+starty=nouv.starty;
+
+
+  colorwin=WCYAN;
+  colorframe=WBLACK;
+  frame=newwin(nouv.height+2,nouv.width+2,nouv.starty,nouv.startx);
+  win=subwin(frame,nouv.height,nouv.width,nouv.starty+1,nouv.startx+1);
+  wbkgd(frame,COLOR_PAIR(colorwin));
+  wbkgd(win,COLOR_PAIR(colorframe));
+  wborder(frame, nouv.bord,nouv.bord,nouv.bord,nouv.bord,nouv.bord,nouv.bord,nouv.bord,nouv.bord);
+  wattron(win,COLOR_PAIR(colorwin));
+  wattron(frame,COLOR_PAIR(colorframe));
+
+
+}

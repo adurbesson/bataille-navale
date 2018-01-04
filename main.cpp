@@ -12,18 +12,15 @@
 #include "chargerNavirePerso.h"
 #include "tableau-case.h"
 
+using namespace std;
 
 
 
 int main (){
 
-
-
-
-
+Jeu game;
+game.setNombreJoueurs(2,2);
 
 return 0;
-
-
 
 }

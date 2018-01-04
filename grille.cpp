@@ -216,4 +216,12 @@ void Grille::afficher_grille(Window& W) {
   afficher_tabCases(W);
 }
 
+void Grille::operator=(Grille nouv){
+nbNaviresCoules=nouv.nbNaviresCoules;
+tabCases=nouv.tabCases;
+for (int i=0;i<5;i++){
+tabNavires[i]=nouv.tabNavires[i];}
+
+}
+
 

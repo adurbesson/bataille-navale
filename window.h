@@ -6,6 +6,8 @@ extern "C" {
 }
 #include <string>
 
+#include "regles.h"
+
 // Ensemble de couleurs possibles (fond+texte)
 enum Color {
   WBLACK,  // couleur fond = noir ,   couleur texte = blanc
@@ -44,6 +46,8 @@ class Window {
 
   // constructeur d'un fenetre de hauteur=h, largeur=w dont le coin superieur gauche
   // a pour coordonnée (x,y), le caractère c est utilisé pour définir la bordure
+  Window();
+  Window(Regles regle);
   Window(size_t h,size_t w, size_t x, size_t y, char c='+');
 
   ~Window();
@@ -69,6 +73,8 @@ class Window {
   void setCouleurFenetre(Color);   // modifie la couleur de la fenêtre (ATTENTION, tout le contenu de la fenêtre prend la couleur)
 
   void clear() const; // enleve tout le contenu de la fenêtre
+  
+  void operator=(Window nouv);
 
 };
 

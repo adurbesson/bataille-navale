@@ -7,7 +7,7 @@
 
 # Définition des variables (-lncurse est ecrit sur le sujet)
 CC= g++
-FLAGS= -Wall -lncurses
+FLAGS= -Wall -lncurses -g
 
 
 
@@ -29,7 +29,7 @@ grille.o : grille.cpp tableau-case.cpp navire.cpp window.cpp
 jeu.o : jeu.cpp regles.cpp joueur.cpp window.cpp navire.cpp case.cpp grille.cpp
 	g++ -c jeu.cpp -o jeu.o
 
-joueur.o : joueur.cpp 
+joueur.o : joueur.cpp window.cpp grille.cpp
 	g++ -c joueur.cpp -o joueur.o
 
 navire.o : navire.cpp case.cpp window.cpp
@@ -41,7 +41,7 @@ regles.o : regles.cpp
 tableau-case.o : tableau-case.cpp case.cpp
 	g++ -c tableau-case.cpp -o tableau-case.o
 
-window.o : window.cpp
+window.o : window.cpp regles.cpp
 	g++ -c window.cpp -o window.o
 
 

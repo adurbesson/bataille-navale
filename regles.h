@@ -5,11 +5,13 @@ class Regles{
 private:
     int largGrille,
         hautGrille;
+        
+    bool navirePerso;
     
     
 public:
     // constructeur / destructeurs
-    Regles(int largGrille, int hautGrille);
+    Regles(int largGrille, int hautGrille,bool navirePerso);
     Regles();
   
     
@@ -17,7 +19,7 @@ public:
     int getHaut();
     
     
-    void setRegles(int largGrille, int hautGrille);//changer les regles
+    void setRegles(int largGrille, int hautGrille,bool navirePerso);//changer les regles
     
 	bool testerRegles();
     
